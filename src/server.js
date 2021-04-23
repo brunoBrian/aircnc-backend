@@ -4,6 +4,7 @@ const cors = require('cors');
 const path = require('path');
 const socketio = require('socket.io');
 const http = require('http');
+require('dotenv/config');
 
 const routes = require('./routes');
 
@@ -11,7 +12,7 @@ const app = express();
 const server = http.Server(app);
 const io = socketio(server);
 
-mongoose.connect('mongodb+srv://brunoSousa:cabelera@omnistack-vix3e.mongodb.net/omnistack09?retryWrites=true&w=majority', {
+mongoose.connect(`mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@omnistack-vix3e.mongodb.net/omnistack09?retryWrites=true&w=majority`, {
   useNewUrlParser: true,
   useUnifiedTopology: true
 });
